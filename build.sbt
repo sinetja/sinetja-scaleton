@@ -1,17 +1,15 @@
 organization := "tv.cntt"
 
-name         := "sinetja-skeleton"
+name         := "sinetja-scaleton"
 
 version      := "1.0-SNAPSHOT"
 
 //------------------------------------------------------------------------------
 
 scalaVersion := "2.11.2"
+//scalaVersion := "2.10.4"
 
-autoScalaLibrary := false
-
-// Do not append Scala versions to the generated artifacts
-crossPaths := false
+scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked")
 
 javacOptions in (Compile) ++= Seq("-Xlint:deprecation")
 
@@ -19,11 +17,13 @@ javacOptions in (Compile) ++= Seq("-Xlint:deprecation")
 
 libraryDependencies += "tv.cntt" % "sinetja" % "1.2"
 
-// Xitrum uses SLF4J, an implementation of SLF4J is needed
+// Sinetja uses SLF4J, an implementation of SLF4J is needed
 libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.1.2"
 
 // For writing condition in logback.xml
 libraryDependencies += "org.codehaus.janino" % "janino" % "2.7.5"
+
+libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "1.0.2"
 
 // Put config directory in classpath for easier development --------------------
 
