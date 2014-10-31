@@ -1,7 +1,7 @@
 package skeleton
 
 import sinetja.{Server, Action, Request, Response, Log}
-import scala.xml.Xhtml
+import scalatags.Text.all._
 
 object App {
   def main(args: Array[String]) {
@@ -9,12 +9,12 @@ object App {
 
     .GET("/", new Action {
       def run(req: Request, res: Response) {
-        val href = req.server.path(classOf[AnotherAction])
-        res.respondHtml(Xhtml.toXhtml(
-          <body>
-            <p>Hello World</p>
-            <p><a href={href}>Link to another action</a></p>
-          </body>
+        val path = req.server.path(classOf[AnotherAction])
+        res.respondHtml(html(
+          body(
+            p("Hello World"),
+            p(a(href := path)("Link to another action"))
+          )
         ))
       }
     })
@@ -35,10 +35,8 @@ object App {
 
 class AnotherAction extends Action {
   def run(req: Request, res: Response) {
-    res.respondHtml(Xhtml.toXhtml(
-      <body>
-        <p>Hi World</p>
-      </body>
+    res.respondHtml(html(
+      body(p("Hi World"))
     ))
   }
 }

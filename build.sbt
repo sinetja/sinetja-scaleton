@@ -23,7 +23,7 @@ libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.1.2"
 // For writing condition in logback.xml
 libraryDependencies += "org.codehaus.janino" % "janino" % "2.7.5"
 
-libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "1.0.2"
+libraryDependencies += "com.scalatags" %% "scalatags" % "0.4.2"
 
 // Put config directory in classpath for easier development --------------------
 
